@@ -394,6 +394,12 @@ footer p {
     /* Make sure header height variable accounts for stacking */
      /* :root { --header-height: 100px; } */ /* Example adjustment */
     #certificates-hero { padding-top: 110px; } /* Adjust padding top based on stacked header */
+    .container {
+         padding: 5px 0;
+    }
+.certificates-hero-content h1{
+    font-size: 2rem;
+}
 }
 
 /* Extra Small Screens (Phones) */
