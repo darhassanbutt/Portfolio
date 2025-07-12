@@ -324,42 +324,7 @@ opacity: 1;
 
     /* Responsive header nav tweaks */
 @media (max-width: 768px) {
- /* === Global Reset === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-/* === Typography === */
-h1, h2, h3 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  color: #2c3e50;
-}
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-p {
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 1rem;
-}
-
-/* === Base Body === */
-body {
-  font-family: 'Poppins', sans-serif;
-  line-height: 1.6;
-  background-color: #f4f4f4;
-  color: #333;
-  overflow-x: hidden;
-}
-
-/* === Container === */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
 
 /* === Header === */
 header {
@@ -378,12 +343,18 @@ header .container {
   align-items: center;
   flex-wrap: wrap;
 }
+header nav {
+   display: flex;
+  flex-wrap: nowrap;      /* Prevent wrapping */
+  gap: 5px
+}
 header nav a {
   color: #fff;
   text-decoration: none;
   margin: 0 10px;
   font-size: 1rem;
   transition: color 0.3s ease;
+  white-space: nowrap;
 }
 header nav a:hover {
   color: #ff6f61;
@@ -393,24 +364,33 @@ header nav a:hover {
 .hero {
   background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.3)), url('back044.jpg') center/cover no-repeat;
   color: white;
-  padding: 140px 20px 80px;
+  padding: 140px 50px 80px;
   min-height: 100vh;
   display: flex;
   align-items: center;
 }
 .hero .container {
-  flex-direction: column;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
+.hero-content {
+  flex: 1;
+  max-width: 700px; /* Allow more space for smoother justification */
+  margin-bottom: 30px;
+}
+
+.hero-content p {
+  text-align: justify;
+  line-height: 1.6;
+}
+
 .hero-content h1 {
-  font-size: 2.8rem;
+  font-size: 2.2rem;
   margin-bottom: 15px;
 }
-.hero-content p {
-  font-size: 1.2rem;
-  margin-bottom: 25px;
-  text-align: center;
-}
+
 .hero .cta-button {
   background: #ff6f61;
   color: #fff;
@@ -423,6 +403,7 @@ header nav a:hover {
 .hero .cta-button:hover {
   background: #ff3b2f;
 }
+
 
 /* === About Section === */
 .about {
@@ -437,7 +418,7 @@ header nav a:hover {
 }
 .about-text {
   flex: 1;
-  min-width: 280px;
+  min-width: 330px;
   margin-bottom: 30px;
 }
 .about-text h2 {
@@ -448,25 +429,24 @@ header nav a:hover {
   text-align: justify;
 }
 .about-image {
-  flex: 1;
-  text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Optional: centers the image and button horizontally */
 }
+
 .about-image img {
-  width: 90%;
-  max-width: 400px;
-  border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.9);
+    width: 100%;
+    max-width: 300px; /* Adjust this value as needed */
+    height: auto;
 }
-/* Resume Button */
-.btn {
-  display: inline-block;
-  background: #ff5e5e;
-  color: white;
-  padding: 12px 24px;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: 0.3s ease;
+
+.about-image .btn {
+    margin-top: 15px;
+    text-align: center;
+    display: inline-block;
+    background:#d9534f;
 }
+
 
 .btn:hover {
   background: #d9534f;
@@ -485,6 +465,9 @@ header nav a:hover {
   box-shadow: 8px 8px 8px rgba(197,46,46,0.5);
   margin-bottom: 2rem;
 }
+.education  h2{
+    font-size: 2.2rem;
+}
 .education-item h3 {
           color: #3498db;
           margin-bottom: 0.5rem;
@@ -494,13 +477,7 @@ header nav a:hover {
           margin-bottom: 0.75rem;
       }
 
-/* === Footer === */
-footer {
-  background: #333;
-  color: #fff;
-  text-align: center;
-  padding: 20px 0;
-}
+
 header .container {
     flex-direction: column;
     text-align: center;
