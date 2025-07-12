@@ -1,0 +1,511 @@
+/* --- Google Fonts Import (Keep from previous version) --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;600&display=swap');
+
+/* --- CSS Variables --- */
+:root {
+    /* >> RETAIN Original Header/General Variables << */
+    --header-bg: rgba(15, 15, 15, 0.8); /* Keeping header background separate */
+    --header-text: #ffffff;
+    --header-height: 70px; /* Adjust based on your header content */
+
+    /* >> UPDATE Theme Variables for Content Area (Inspired by Videographer Image) << */
+    --bg-content-dark: #1a1f36; /* Deep blue/purple background */
+    --bg-content-medium: #2a2f4d; /* Slightly lighter variant */
+    --text-light: #e0e5f5; /* Off-white text */
+    --text-headings: #ffffff; /* Pure white for headings */
+    --text-muted: #a0a8c3; /* Muted text color */
+    --accent-primary: #00aaff; /* Bright blue accent */
+    --accent-secondary: #4d5eff; /* Another blue/purple accent */
+    --accent-neon: #00f6ff; /* Neon cyan highlight */
+
+    /* >> Remove/Update Card Specific Variables << */
+    /* --card-bg: #2c2c2c;  <-- Removed, cards will blend more */
+    /* --shadow-color: rgba(0, 0, 0, 0.4); <-- Removed */
+    /* --card-shadow: 0 6px 15px var(--shadow-color); <-- Removed */
+    /* --card-hover-shadow: 0 10px 25px var(--shadow-color); <-- Removed */
+
+    --border-radius: 8px; /* Slightly adjusted radius */
+    --spacing-unit: 1rem;
+}
+
+/* --- General Reset & Base Styles (Keep mostly as is) --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 100%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.7;
+    /* >>> USE NEW Background for the main content area <<< */
+    background-color: var(--bg-content-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-unit);
+}
+
+/* --- Typography (Keep general rules, colors updated by variables) --- */
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--text-headings); /* Uses new variable */
+    margin-bottom: calc(var(--spacing-unit) * 0.75);
+    line-height: 1.3;
+}
+
+/* Adjusted sizes slightly for new theme */
+h1 { font-size: clamp(2.8rem, 5.5vw, 3.8rem); }
+h2 { font-size: clamp(2rem, 4vw, 2.5rem); }
+h3 { font-size: 1.4rem; color: var(--accent-neon); /* Example: Use neon for card titles */}
+
+p {
+    font-size: 1rem;
+    color: var(--text-light); /* Uses new variable */
+    margin-bottom: var(--spacing-unit);
+}
+
+a {
+    color: var(--accent-primary); /* Uses new variable */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover, a:focus {
+    color: var(--accent-neon); /* Highlight hover with neon */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ================================================================== */
+/* --- HEADER STYLING (UNCHANGED as requested) --- */
+/* ================================================================== */
+header {
+    background: var(--header-bg); /* Uses separate header variable */
+    color: var(--header-text);   /* Uses separate header variable */
+    padding: calc(var(--spacing-unit) * 0.5) 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    min-height: var(--header-height);
+    display: flex;
+    align-items: center;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+header h3 { /* Style for "Engineer | Programmer | Developer" */
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 0;
+    color: var(--header-text); /* Uses separate header variable */
+}
+
+header nav a {
+    color: var(--header-text); /* Uses separate header variable */
+    margin: 0 calc(var(--spacing-unit) * 0.75);
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease; /* Added transition */
+}
+header nav a::after { /* Subtle underline hover effect (can keep or remove) */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 4px;
+    right: 0;
+    background: var(--accent-primary); /* Use new accent color */
+    transition: width 0.3s ease;
+    -webkit-transition: width 0.3s ease;
+}
+header nav a:hover::after {
+    width: 100%;
+    left: 0;
+    background-color: var(--accent-primary);
+}
+header nav a:hover,
+header nav a:focus {
+    color: var(--accent-primary); /* Use new accent color on hover */
+}
+
+/* ================================================================== */
+/* --- STYLING FOR SECTIONS BELOW HEADER (Applying New Theme) --- */
+/* ================================================================== */
+
+/* --- Certificates Hero Section (Updated Style) --- */
+#certificates-hero {
+    padding-top: var(--header-height); /* Push content below fixed header */
+    min-height: 55vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* >>> USE NEW Background Style <<< */
+    /* Example: A gradient inspired by the target image's mood */
+    background: linear-gradient(135deg, #1a1f36 0%, #2a2f4d 50%, #1a1f36 100%);
+    /* Or use a fitting background image: */
+    /* background: url('your-new-background.jpg') center/cover no-repeat; */
+    color: var(--text-headings);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Remove the dark overlay if the new background is dark enough */
+/* #certificates-hero::before { display: none; } */
+/* Or adjust overlay if using a lighter background image */
+ #certificates-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Subtle overlay if needed */
+    background: rgba(15, 20, 40, 0.3);
+    z-index: 1;
+ }
+
+.certificates-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: calc(var(--spacing-unit) * 2);
+}
+
+/* Style Hero text like the target */
+.certificates-hero-content h1 {
+    color: var(--text-headings);
+    font-size: clamp(3rem, 6vw, 4rem); /* Make title large */
+    text-transform: uppercase; /* Optional: Uppercase like target */
+    margin-bottom: calc(var(--spacing-unit) * 1.5); /* More space below title */
+}
+
+.certificates-hero-content p {
+    font-size: 1.1rem; /* Slightly smaller subtitle */
+    color: var(--text-muted); /* Muted color for subtitle */
+    max-width: 600px; /* Limit width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Certificates Section (Updated Style) --- */
+.certificates-container {
+    padding-top: calc(var(--spacing-unit) * 3);
+    padding-bottom: calc(var(--spacing-unit) * 4); /* More padding at bottom */
+    background-color: var(--bg-content-dark); /* Ensure consistent background */
+}
+
+.certificates {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: calc(var(--spacing-unit) * 2.5); /* Increased gap */
+}
+
+/* --- Certificate Card (Updated Style - Less like a card) --- */
+.certificate-card {
+    /* >>> REMOVE Card Appearance <<< */
+    background: transparent; /* Blend into background */
+    box-shadow: none; /* Remove shadow */
+    padding: var(--spacing-unit); /* Adjust padding as needed */
+    border-radius: var(--border-radius);
+    /* Optional: Add a subtle border for separation */
+    /* border: 1px solid rgba(160, 168, 195, 0.2); */ /* Example border using text-muted alpha */
+
+    text-align: left;
+    flex: 1 1 340px; /* Adjust flex-basis */
+    max-width: 380px;
+    transition: transform 0.3s ease; /* Keep or modify hover transition */
+    display: flex;
+    flex-direction: column;
+
+    /* Remove previous hover effect related to shadow/scaling */
+    /* transform: none; */
+}
+
+.certificate-card:hover {
+     /* Optional: Subtle hover effect like border highlight */
+     /* border-color: var(--accent-primary); */
+     transform: translateY(-3px); /* Slight lift */
+}
+
+
+/* Certificate Images */
+.certificate-card img {
+    width: 100%;
+    height: auto;
+    max-height: 220px; /* Adjusted max height */
+    object-fit: cover;
+    border-radius: calc(var(--border-radius) * 0.75);
+    margin-bottom: calc(var(--spacing-unit) * 1.2);
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Optional subtle border on image */
+}
+
+/* Certificate Text */
+.certificate-card h3 {
+    color: var(--accent-neon); /* Neon title */
+    font-size: 1.3rem; /* Adjusted size */
+    margin-bottom: calc(var(--spacing-unit) * 0.6);
+    text-transform: uppercase; /* Optional: Uppercase titles */
+}
+
+.certificate-card p {
+    color: var(--text-muted); /* Muted color for description */
+    font-size: 0.9rem;
+    flex-grow: 1;
+    line-height: 1.6; /* Adjust line height */
+}
+
+/* --- Lightbox Styling (Keep as is, colors will adapt via variables) --- */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 20, 40, 0.95); /* Darker overlay using theme color */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 2000;
+    padding: var(--spacing-unit);
+}
+
+.lightbox .close {
+    position: absolute;
+    top: calc(var(--spacing-unit) * 1.5);
+    right: calc(var(--spacing-unit) * 1.5);
+    font-size: 2.5rem;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    line-height: 1;
+}
+.lightbox .close:hover {
+    color: var(--accent-neon); /* Neon hover for close */
+}
+
+#lightbox-img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: calc(var(--border-radius) * 0.5);
+    margin-bottom: var(--spacing-unit);
+    object-fit: contain;
+}
+
+#download-btn {
+    display: inline-block;
+    background: var(--accent-primary);
+    color: var(--text-headings);
+    padding: calc(var(--spacing-unit) * 0.75) calc(var(--spacing-unit) * 1.5);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none; /* Ensure no default border */
+    text-transform: uppercase; /* Style like buttons */
+    letter-spacing: 0.5px;
+}
+
+#download-btn:hover {
+    background: var(--accent-neon);
+    color: var(--bg-content-dark); /* Dark text on neon hover */
+    transform: scale(1.05);
+}
+
+/* --- Footer Styling (Update background for consistency) --- */
+footer {
+    background: #101425; /* Darker shade of the content background */
+    color: var(--text-muted);
+    text-align: center;
+    padding: calc(var(--spacing-unit) * 1.5) 0;
+    margin-top: auto;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* --- Responsive Design (Review and adjust if needed) --- */
+/* Keep existing breakpoints, styling changes might require tweaks */
+
+/* Medium Screens (Tablets) */
+@media (max-width: 992px) {
+    .certificate-card {
+        flex-basis: 320px;
+        max-width: 360px;
+    }
+     /* Keep header responsiveness as is */
+    header h3 { font-size: 1rem; }
+    header nav a { margin: 0 calc(var(--spacing-unit) * 0.5); font-size: 0.9rem; }
+}
+
+/* Small Screens (Tablets/Large Phones) */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    h3 { font-size: 1.2rem; }
+    .certificates-hero-content p { font-size: 1rem; }
+    .certificates-hero-content h1 { font-size: 2.2rem; }
+
+    .certificate-card {
+        flex-basis: calc(50% - var(--spacing-unit));
+        max-width: calc(50% - var(--spacing-unit));
+    }
+
+     /* Keep header responsiveness as is */
+    header .container { flex-direction: column; align-items: center; gap: calc(var(--spacing-unit) * 0.5); }
+    header nav { margin-top: calc(var(--spacing-unit) * 0.5); }
+    /* Make sure header height variable accounts for stacking */
+     /* :root { --header-height: 100px; } */ /* Example adjustment */
+    #certificates-hero { padding-top: 110px; } /* Adjust padding top based on stacked header */
+}
+
+/* Extra Small Screens (Phones) */
+@media (max-width: 576px) {
+     h1 { font-size: 2.2rem; }
+    .certificate-card {
+        flex-basis: 90%;
+        max-width: 90%;
+    }
+     /* Keep header responsiveness as is */
+    header nav a { margin: 0 5px; font-size: 0.85rem; }
+    header h3 { text-align: center; }
+    #certificates-hero { min-height: 45vh; padding-top: 110px; /* Adjust as needed */ }
+}
+
+/* Optional: Style for Bracketed Links (like "SEE MORE ABOUT US") */
+/* Apply class="btn-bracketed" to an <a> tag if you add one */
+.btn-bracketed {
+  display: inline-block;
+  padding: 8px 15px 8px 25px; /* Adjust padding */
+  color: var(--accent-neon);
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  border: none; /* Remove default border look */
+  background: none; /* Remove default background */
+}
+
+.btn-bracketed::before,
+.btn-bracketed::after {
+  content: '';
+  position: absolute;
+  width: 15px; /* Width of bracket lines */
+  height: 15px; /* Height of bracket lines */
+  border-color: var(--accent-primary); /* Bracket color */
+  border-style: solid;
+  transition: border-color 0.3s ease;
+}
+
+.btn-bracketed::before {
+  top: 0;
+  left: 0;
+  border-width: 2px 0 0 2px; /* Top and left border */
+}
+
+.btn-bracketed::after {
+  bottom: 0;
+  right: 0;
+  border-width: 0 2px 2px 0; /* Bottom and right border */
+}
+
+.btn-bracketed:hover {
+  color: var(--text-headings); /* Text color on hover */
+}
+
+.btn-bracketed:hover::before,
+.btn-bracketed:hover::after {
+  border-color: var(--accent-neon); /* Bracket color on hover */
+}
+
+
+/* ========== MOBILE RESPONSIVE PATCH ========== */
+html {
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Ensure text wraps nicely */
+h1, h2, h3, p {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+/* Responsive header nav tweaks */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    header nav {
+        margin-top: 10px;
+    }
+    header nav a {
+        margin: 5px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    h1 { font-size: 2rem; }
+    header h3 {
+        font-size: 1rem;
+        text-align: center;
+    }
+    header nav a {
+        font-size: 0.8rem;
+    }
+}
+
+/* Make sure images never exceed viewport */
+img, .container, section, div {
+    max-width: 100%;
+}
